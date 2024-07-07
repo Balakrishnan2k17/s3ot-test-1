@@ -12,11 +12,6 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
-    env:
-     AWS_ACCESS_KEY_ID: AKIAST4BTQET2NURJV5B
-     AWS_SECRET_ACCESS_KEY: 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
-     AWS_DEFAULT_REGION: us-west-2
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -28,6 +23,16 @@ jobs:
       uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: 1.4.0
+
+    - name: Configure AWS Credentials
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}  # Optional, set if you have a default region
+      run: |
+        echo "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" >> $GITHUB_ENV
+        echo "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" >> $GITHUB_ENV
+        echo "AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}" >> $GITHUB_ENV
 
     - name: Terraform Init
       run: terraform init
