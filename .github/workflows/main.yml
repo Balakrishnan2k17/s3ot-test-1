@@ -42,10 +42,13 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
+      working-directory: /home/runner/work/s3ot-test-1/s3ot-test-1
 
     - name: Terraform Plan
       run: terraform plan
+      working-directory: /home/runner/work/s3ot-test-1/s3ot-test-1
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
+      working-directory: /home/runner/work/s3ot-test-1/s3ot-test-1
