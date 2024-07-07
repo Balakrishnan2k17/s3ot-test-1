@@ -1,7 +1,7 @@
 module "my-first_ecr-repo" {
   source = "../terraform-modules/ecr/"
 
-  repository_name = "my-first-repo-in-private-1"
+  repository_name = "my-first-repo-in-private"
 
 
   repository_lifecycle_policy = jsonencode({
