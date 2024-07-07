@@ -1,5 +1,5 @@
 module "updatepackage_ecr" {
-  source = "../tf-modules/ecr/"
+  source = "../terraform-modules/ecr/"
 
   repository_name = "packageupgrade"
 
