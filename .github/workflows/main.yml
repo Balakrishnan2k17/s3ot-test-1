@@ -23,10 +23,13 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
+      working-directory: ./path/to/terraform/config  # specify if your Terraform config is not in the root
 
     - name: Terraform Plan
       run: terraform plan
+      working-directory: ./path/to/terraform/config  # specify if your Terraform config is not in the root
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
+      working-directory: ./path/to/terraform/config  # specify if your Terraform config is not in the root
