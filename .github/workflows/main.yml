@@ -12,6 +12,11 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
+    env:
+     AWS_ACCESS_KEY_ID: AKIAST4BTQET2NURJV5B
+     AWS_SECRET_ACCESS_KEY: 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
+     AWS_DEFAULT_REGION: us-west-2
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
