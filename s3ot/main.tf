@@ -1,7 +1,7 @@
-module "updatepackage_ecr" {
+module "my-first_ecr-repo" {
   source = "../terraform-modules/ecr/"
 
-  repository_name = "packageupgrade"
+  repository_name = "my-first-repo"
 
 
   repository_lifecycle_policy = jsonencode({
